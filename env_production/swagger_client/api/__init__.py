@@ -1,0 +1,47 @@
+from __future__ import absolute_import
+
+# flake8: noqa
+
+# import apis into api package
+from add_to_cartovista.swagger_client.api.api_key_api import ApiKeyApi
+from add_to_cartovista.swagger_client.api.authentication_api import AuthenticationApi
+from add_to_cartovista.swagger_client.api.composite_variable_scoring_api import CompositeVariableScoringApi
+from add_to_cartovista.swagger_client.api.config_api import ConfigApi
+from add_to_cartovista.swagger_client.api.custom_application_api import CustomApplicationApi
+from add_to_cartovista.swagger_client.api.data_api import DataApi
+from add_to_cartovista.swagger_client.api.data_column_api import DataColumnApi
+from add_to_cartovista.swagger_client.api.data_row_api import DataRowApi
+from add_to_cartovista.swagger_client.api.data_services_api import DataServicesApi
+from add_to_cartovista.swagger_client.api.data_table_api import DataTableApi
+from add_to_cartovista.swagger_client.api.feature_api import FeatureApi
+from add_to_cartovista.swagger_client.api.feedback_api import FeedbackApi
+from add_to_cartovista.swagger_client.api.file_api import FileApi
+from add_to_cartovista.swagger_client.api.folder_api import FolderApi
+from add_to_cartovista.swagger_client.api.grid_layer_api import GridLayerApi
+from add_to_cartovista.swagger_client.api.grid_layer_settings_api import GridLayerSettingsApi
+from add_to_cartovista.swagger_client.api.group_api import GroupApi
+from add_to_cartovista.swagger_client.api.heatmap_api import HeatmapApi
+from add_to_cartovista.swagger_client.api.layer_api import LayerApi
+from add_to_cartovista.swagger_client.api.layer_settings_api import LayerSettingsApi
+from add_to_cartovista.swagger_client.api.location_api import LocationApi
+from add_to_cartovista.swagger_client.api.map_api import MapApi
+from add_to_cartovista.swagger_client.api.o_auth_api import OAuthApi
+from add_to_cartovista.swagger_client.api.ogc_api import OGCApi
+from add_to_cartovista.swagger_client.api.organization_api import OrganizationApi
+from add_to_cartovista.swagger_client.api.permission_api import PermissionApi
+from add_to_cartovista.swagger_client.api.poi_analysis_api import PoiAnalysisApi
+from add_to_cartovista.swagger_client.api.portal_api import PortalApi
+from add_to_cartovista.swagger_client.api.sign_up_api import SignUpApi
+from add_to_cartovista.swagger_client.api.slide_api import SlideApi
+from add_to_cartovista.swagger_client.api.statistics_api import StatisticsApi
+from add_to_cartovista.swagger_client.api.style_theme_services_api import StyleThemeServicesApi
+from add_to_cartovista.swagger_client.api.subscription_api import SubscriptionApi
+from add_to_cartovista.swagger_client.api.symbol_api import SymbolApi
+from add_to_cartovista.swagger_client.api.user_api import UserApi
+from add_to_cartovista.swagger_client.api.vector_services_api import VectorServicesApi
+from add_to_cartovista.swagger_client.api.view_api import ViewApi
+from add_to_cartovista.swagger_client.api.web_map_tile_service_api import WebMapTileServiceApi
+from add_to_cartovista.swagger_client.api.wms_api import WmsApi
+from add_to_cartovista.swagger_client.api.wms_settings_api import WmsSettingsApi
+from add_to_cartovista.swagger_client.api.wmts_api import WmtsApi
+from add_to_cartovista.swagger_client.api.wmts_settings_api import WmtsSettingsApi
