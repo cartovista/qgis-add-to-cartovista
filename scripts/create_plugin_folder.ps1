@@ -70,9 +70,14 @@ foreach ($item in $ItemsToCopy) {
     }
 }
 
-$env_folder = $Prod ? "env_production" : "env_development"
+if ($Prod) {
+    $env_folder = "env_production"
+} else {
+    $env_folder = "env_development"
+}
+
 foreach ($item in $EnvDependantItemsToCopy) {
-    $SourcePath = Join-Path $SourceDir $env_folder $item
+    $SourcePath = Join-Path $SourceDir (Join-Path $env_folder $item)
     $DestPath   = Join-Path $OutputDir $item
 
     if (Test-Path $SourcePath) {

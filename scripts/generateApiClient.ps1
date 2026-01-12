@@ -17,10 +17,6 @@ If (!(Test-Path -path "./$($swaggerCodeGenJar)" -PathType Leaf)) {
     Invoke-WebRequest -OutFile $swaggerCodeGenJar "https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/$swaggerCodeGenVersion/swagger-codegen-cli-$swaggerCodeGenVersion.jar"
 }
 java -DmodelTests=false -DmodelDocs=false -DapiTests=false -DapiDocs=false -jar $swaggerCodeGenJar generate -i $openApiUrl "-DpackageName=$packageName" -l python -o ../generatedCodeTempFolder
-#If (Test-Path -path ./swagger_client) {
-#   Remove-Item -Path ./swagger_client -Recurse
-#}
-
 
 $ApiClientFilePath = "../generatedCodeTempFolder/$packageNamePart1/$packageNamePart2/api_client.py"
 $ApiClientFileContent = Get-Content -Path $ApiClientFilePath -Raw
@@ -39,7 +35,11 @@ If (Test-Path -path "./$packageNamePart2") {
     Remove-Item -Path "./$packageNamePart2" -Recurse -Force
 }
 
-$destinationPath = $Prod ? "../env_production" : "../env_development"
+if ($Prod) {
+    $destinationPath = "../env_production"
+} else {
+    $destinationPath = "../env_development"
+}
 if (-not (Test-Path $destinationPath)) {
         New-Item -Path $destinationPath -ItemType Directory -Force | Out-Null
 }

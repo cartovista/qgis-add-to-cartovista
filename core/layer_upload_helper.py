@@ -53,7 +53,7 @@ class LayerUploadHelper(QObject):
         output = QgsVectorFileWriter.writeAsVectorFormatV3(layer_upload_info.layer, layer_path_no_extension, self.transform_context, writer_options)
         if output[0]:
             layer_upload_info.status = LayerUploadStatus.FAILED
-            self.iface.messageBar().pushMessage("Error writing Layer contents", "Failed to write: " + layer_upload_info.layer_name + " Status: " + str(output), level=Qgis.Critical)
+            self.iface.messageBar().pushMessage("Error writing Layer contents", "Failed to write: " + layer_upload_info.layer_name + " Status: " + str(output), level=Qgis.MessageLevel.Critical)
             raise Exception("Writing layer to geopackage failed")
         true_file_path = output[2]
         layer_upload_info.file_path = true_file_path

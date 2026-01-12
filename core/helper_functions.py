@@ -8,7 +8,7 @@ class HelperFunctions:
             return False
         geom_type = QgsWkbTypes.geometryType(layer.wkbType())
         return geom_type in (
-            QgsWkbTypes.PointGeometry,
-            QgsWkbTypes.LineGeometry,
-            QgsWkbTypes.PolygonGeometry,
+            QgsWkbTypes.GeometryType.PointGeometry,
+            QgsWkbTypes.GeometryType.LineGeometry,
+            QgsWkbTypes.GeometryType.PolygonGeometry,
         )

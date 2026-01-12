@@ -6,7 +6,7 @@
 name=Add to CartoVista
 qgisMinimumVersion=3.36.3
 description=Upload QGIS maps and layers to CartoVista.
-version=0.9
+version=1.0
 author=CartoVista
 email=info@cartovista.com
 
@@ -44,3 +44,4 @@ category=Web
 # If the plugin can run on QGIS Server.
 server=False
 
+supportsQt6=True

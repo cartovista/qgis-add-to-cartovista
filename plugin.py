@@ -74,10 +74,6 @@ class CartoVistaPlugin(QObject):
 
         # Declare instance attributes
         self.menu = self.tr(u'&CartoVista')
-
-        # Check if plugin was started the first time in current QGIS session
-        # Must be set in initGui() to survive plugin reloads
-        self.first_start = None
         
         self.pre_upload_dialog = PreUploadDialog()
         self.upload_progress_dialog = UploadProgress()
@@ -86,7 +82,6 @@ class CartoVistaPlugin(QObject):
         self.layer_upload_helper = LayerUploadHelper()
         self.master_password_dialog = MasterPasswordDialog()
         self.layer_to_upload = None
-        self.uploading = False
         self.temp_dir = None
         self.map_name = None
         self.organization : Optional[Organization] = None
@@ -147,21 +142,23 @@ class CartoVistaPlugin(QObject):
         self.set_share_map_state()
 
         # Re-check whenever project layers change
-        QgsProject.instance().layersAdded.connect(self.set_share_map_state)
-        QgsProject.instance().layersRemoved.connect(self.set_share_map_state)
+        QgsProject.instance().layerTreeRoot().addedChildren.connect(self.set_share_map_state)
+        QgsProject.instance().layerTreeRoot().removedChildren.connect(self.set_share_map_state)
+        QgsProject.instance().layersAdded.connect(self.set_share_map_state) #needed since layerTreeRoot().addedChildren does not fire when opening a project
+        QgsProject.instance().layerTreeRoot().visibilityChanged.connect(self.set_share_map_state)
         self.share_layer_action = None
         
         try:
             self.iface.layerTreeView().contextMenuAboutToShow.connect(self.layer_tree_view_menu)
         except AttributeError:
             pass
-      
-        self.first_start = True
 
     def unload(self):
         """Removes the plugin menu item and icon from QGIS GUI."""
         self.disconnect_signal(QgsProject.instance().layersAdded, self.set_share_map_state)
-        self.disconnect_signal(QgsProject.instance().layersRemoved, self.set_share_map_state)
+        self.disconnect_signal(QgsProject.instance().layerTreeRoot().visibilityChanged, self.set_share_map_state)
+        self.disconnect_signal(QgsProject.instance().layerTreeRoot().addedChildren, self.set_share_map_state)
+        self.disconnect_signal(QgsProject.instance().layerTreeRoot().removedChildren, self.set_share_map_state)
 
         if self.cartovista_web_menu and not sip.isdeleted(self.cartovista_web_menu):
             self.cartovista_web_menu.deleteLater()
@@ -176,8 +173,9 @@ class CartoVistaPlugin(QObject):
         self.share_layer_action = None
 
     def open_upload_map_dialog(self):
+        self.close_all_dialogs()
         result = self.pre_upload_dialog.open(True, self.mac_os_keychain_permission_issue)
-        if result == QDialog.Accepted:
+        if result == QDialog.DialogCode.Accepted:
             self.upload_map()
     
     def upload_map_pre_dialog(self):
@@ -189,14 +187,13 @@ class CartoVistaPlugin(QObject):
         self.verify_master_password()
 
     def open_upload_layer_dialog(self):
+        self.close_all_dialogs()
         result = self.pre_upload_dialog.open(False, self.mac_os_keychain_permission_issue)
-        if result == QDialog.Accepted:
+        if result == QDialog.DialogCode.Accepted:
             self.upload_single_layer(self.layer_to_upload)
         
 
     def upload_single_layer(self, layer: Optional[QgsVectorLayer] = None):
-        if (self.uploading): return
-        #self.uploading = True
         # Create temp directory
         # Create a directory inside C:\Users\USENAME\AppData\Local\Temp for windows
         self.temp_dir = tempfile.mkdtemp(None, 'cartovista_qgisplugin_', None)
@@ -217,7 +214,6 @@ class CartoVistaPlugin(QObject):
     
     def _on_upload_single_layer_success(self, layer_upload_info: LayerUploadInfo):
         self.upload_progress_dialog.set_progress(4)
-        self.uploading = False
         self.delete_temp_folder()
         self.disconnect_signal(self.layer_upload_helper.layer_uploaded, self._on_upload_single_layer_success)
         self.disconnect_signal(self.layer_upload_helper.layer_upload_failed, self._on_upload_single_layer_error)
@@ -245,13 +241,21 @@ class CartoVistaPlugin(QObject):
 
         # If the project is saved, or the map has no layers, use the window title
         window_title = self.iface.mainWindow().windowTitle()
-        title_cleaned = re.sub(r'\s*—\s*QGIS$', '', window_title).lstrip('*')
+        title_cleaned = re.sub(r'\s*[-—]\s*QGIS\b.*$', '', window_title).lstrip('*')
         self.map_name = title_cleaned
 
     def upload_map(self):
-        layers = self.iface.mapCanvas().layers()
+
+        def is_layer_visible(layer):
+            layer_tree_root = QgsProject.instance().layerTreeRoot()
+            checked_ids = {l.id() for l in layer_tree_root.checkedLayers()}
+            if checked_ids:
+                return layer.id() in checked_ids
+            return False        
+        layers = list(filter(is_layer_visible, self.iface.mapCanvas().layers())) 
+        
         if not layers:
-            self.iface.messageBar().pushMessage("No layer selected for uplaod", level=Qgis.Warning)
+            self.iface.messageBar().pushMessage("No layer selected for uplaod", level=Qgis.MessageLevel.Warning)
             return
         self.get_map_name()
         self.upload_progress_dialog.start_upload_map(self.map_name)
@@ -330,7 +334,7 @@ class CartoVistaPlugin(QObject):
         self.upload_progress_dialog.close()
         upload_failed_layer_names = [layer_info.layer_name for layer_info in self.layer_upload_helper.layers_upload_info if layer_info.status == LayerUploadStatus.FAILED]
         self.upload_complete_dialog.map_success(self.map_name, self.construct_map_url(API_CLIENT.tenant_url_code, cv_map.vanity_url), self.layer_upload_helper.invalid_layer_names, upload_failed_layer_names)
-        self.iface.messageBar().pushMessage("Map created", level=Qgis.Info)
+        self.iface.messageBar().pushMessage("Map created", level=Qgis.MessageLevel.Info)
     
     def _update_slide(self, cv_map: Map):
         layers_need_slide_update = [lui for lui in self.layer_upload_helper.layers_upload_info if lui.status == LayerUploadStatus.COMPLETE and (lui.add_cv_labels or lui.opacity != 1)]
@@ -392,9 +396,14 @@ class CartoVistaPlugin(QObject):
     def set_share_map_state(self, _ = None):
         supported = False
         layers = QgsProject.instance().mapLayers().values()
+        layer_tree_root = QgsProject.instance().layerTreeRoot()
         if len(layers) > 0:
             for layer in QgsProject.instance().mapLayers().values():
-                if HelperFunctions.is_supported_layer(layer):
+                layer_tree_layer = layer_tree_root.findLayer(layer.id())
+                if layer_tree_layer is None:
+                    continue
+                is_visible = layer_tree_layer.isVisible()
+                if HelperFunctions.is_supported_layer(layer) and is_visible:
                     supported = True
                     break
         self.share_map_action.setEnabled(supported)
@@ -423,10 +432,15 @@ class CartoVistaPlugin(QObject):
     def _on_authentication_error(self, _):
         AUTHORIZATION_MANAGER.deauthenticate()
 
-    def _on_deauthenticated(self):
+    def close_all_dialogs(self):
         self.pre_upload_dialog.close()
         self.upload_progress_dialog.close()
         self.upload_complete_dialog.close()
+        self.authorize_dialog.close()
+        self.master_password_dialog.close()
+
+    def _on_deauthenticated(self):
+        self.close_all_dialogs()
         self.set_user_and_organization_in_dialogs(None, None)
         if (self.layer_to_upload is not None):
             self.upload_layer_pre_dialog(self.layer_to_upload)
@@ -460,7 +474,7 @@ class CartoVistaPlugin(QObject):
             if os.path.exists(self.temp_dir):
                 shutil.rmtree(self.temp_dir, ignore_errors=True)
         except OSError as e:
-            self.iface.messageBar().pushMessage("Error deleting temp folder",  "Error: " + str(self.temp_dir) +" : "+str(e.strerror), level=Qgis.Critical)
+            self.iface.messageBar().pushMessage("Error deleting temp folder",  "Error: " + str(self.temp_dir) +" : "+str(e.strerror), level=Qgis.MessageLevel.Critical)
         finally:
             self.temp_dir = None
 

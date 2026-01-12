@@ -1,7 +1,8 @@
-from PyQt5.QtWidgets import QWidget, QLabel, QHBoxLayout, QStackedLayout, QSizePolicy
-from PyQt5.QtSvg import QSvgWidget
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtCore import Qt
+from .custom_svg import CustomSvgWidget
+from qgis.PyQt.QtWidgets import QWidget, QLabel, QHBoxLayout, QStackedLayout, QSizePolicy
+#from qgis.PyQt.QtSvg import QSvgWidget
+from qgis.PyQt.QtGui import QPixmap
+from qgis.PyQt.QtCore import Qt
 import os
 from pathlib import Path
 
@@ -15,13 +16,13 @@ class DialogHeader(QWidget):
         # Stack layout to layer background and logo
         stack = QStackedLayout(self)
         stack.setContentsMargins(0, 0, 0, 0)
-        stack.setStackingMode(QStackedLayout.StackAll)
+        stack.setStackingMode(QStackedLayout.StackingMode.StackAll)
 
         # Background label (stretches with widget size)
         self.bg_label = QLabel(self)
         self.bg_label.setScaledContents(True)
-        self.bg_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        pixmap = QPixmap(str(background_path)).scaledToHeight(120, Qt.SmoothTransformation)
+        self.bg_label.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
+        pixmap = QPixmap(str(background_path)).scaledToHeight(120, Qt.TransformationMode.SmoothTransformation)
         self.bg_label.setPixmap(pixmap)
         stack.addWidget(self.bg_label)
 
@@ -29,12 +30,9 @@ class DialogHeader(QWidget):
         logo_container = QWidget(self)
         logo_layout = QHBoxLayout(logo_container)
         logo_layout.setContentsMargins(0, 0, 0, 0)
-        logo_layout.setAlignment(Qt.AlignCenter)
+        logo_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        logo_size = (171, 37)
-        self.logo = QSvgWidget(logo_container)
-        self.logo.load(logo_path)
-        self.logo.setFixedSize(*logo_size)  # Keep constant size
+        self.logo = CustomSvgWidget(logo_path, logo_container)
         logo_layout.addWidget(self.logo)
 
         stack.addWidget(logo_container)
