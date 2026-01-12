@@ -36,12 +36,12 @@ class UploadCompleteDialog(AuthorizedDialog):
             self.primaryButton.clicked.connect(self.on_click_open_map_button)
         else:
             self.primaryButton.setText("Create map from layer")
-            self.primaryButton.clicked.connect(self.create_map_from_layer.emit)
+            self.primaryButton.clicked.connect(self.emit_create_map_from_layer)
         self.primaryButton.setVisible(True)
 
     def clear_primary_button_listeners(self):
         try:
-            self.primaryButton.clicked.disconnect(self.create_map_from_layer.emit)
+            self.primaryButton.clicked.disconnect(self.emit_create_map_from_layer)
         except TypeError:
             pass
 
@@ -81,6 +81,9 @@ class UploadCompleteDialog(AuthorizedDialog):
         
     def on_click_open_map_button(self):
         QDesktopServices.openUrl(QUrl(self.map_url))
+
+    def emit_create_map_from_layer(self):
+        self.create_map_from_layer.emit()
     
 
         

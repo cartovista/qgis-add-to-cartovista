@@ -25,7 +25,7 @@ class PreUploadDialog(AuthorizedDialog):
         self.primaryButton.setText(primary_text)
         self.secondaryButton.setText("Cancel")
 
-        dialog_text = "Upload map to your CartoVista workspace?" if isMap else "Upload layer to your CartoVista workspace?"
+        dialog_text = "Upload map to your CartoVista workspace? Unchecked layers will not be included." if isMap else "Upload layer to your CartoVista workspace?"
 
         if mac_os_keychain_issue:
             dialog_text += "<br> <br> <small><b>Tip:</b> To get QGIS to remember your master password:" \

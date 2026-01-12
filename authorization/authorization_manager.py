@@ -44,7 +44,7 @@ class AuthorizationManager(QObject):
         api_token, expiry_time, refresh_token = AuthorizationManager.retrieve_tokens()
 
         if expiry_time:
-            token_expiry_dt = QDateTime.fromString(expiry_time, Qt.ISODate)
+            token_expiry_dt = QDateTime.fromString(expiry_time, Qt.DateFormat.ISODate)
             if not token_expiry_dt.isValid() or token_expiry_dt <= QDateTime.currentDateTime():
                 self._initiate_token_refresh(refresh_token, True)
                 return
@@ -122,7 +122,7 @@ class AuthorizationManager(QObject):
     def _store_api_token(self, token: str, expiry: int, refresh_token: str):
         buffer_seconds = 60
         expires_at = QDateTime.currentDateTimeUtc().addSecs(expiry - buffer_seconds)
-        expires_at_str = expires_at.toString(Qt.ISODate)
+        expires_at_str = expires_at.toString(Qt.DateFormat.ISODate)
         QgsApplication.authManager().storeAuthSetting(
             CARTOVISTA_ACCESS_TOKEN, token, True
         )
