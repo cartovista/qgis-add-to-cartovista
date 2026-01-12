@@ -12,8 +12,8 @@ email=info@cartovista.com
 
 about=Export QGIS projects to new maps to CartoVista.com for easier sharing and collaboration with colleagues via the web.
 
-tracker=https://github.com/cartovista/qgis-plugin/issues
-repository=https://github.com/cartovista/qgis-plugin
+tracker=https://github.com/cartovista/qgis-add-to-cartovista/issues
+repository=https://github.com/cartovista/qgis-add-to-cartovista
 # End of mandatory metadata
 
 # Recommended items:
@@ -25,7 +25,7 @@ hasProcessingProvider=no
 # Tags are comma separated with spaces allowed
 tags=python
 
-homepage=https://github.com/cartovista/qgis-plugin
+homepage=https://github.com/cartovista/qgis-add-to-cartovista
 icon=assets/icon.png
 # experimental flag
 experimental=False
