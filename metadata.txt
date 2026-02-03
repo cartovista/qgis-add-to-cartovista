@@ -6,14 +6,15 @@
 name=Add to CartoVista
 qgisMinimumVersion=3.36.3
 description=Upload QGIS maps and layers to CartoVista.
-version=1.0
+version=1.1
 author=CartoVista
 email=info@cartovista.com
 
-about=Export QGIS projects to new maps to CartoVista.com for easier sharing and collaboration with colleagues via the web.
+about=Add to CartoVista plugin seamlessly publishes your layers, symbology, and data directly from QGIS to shareable, browser-based maps.
 
 tracker=https://github.com/cartovista/qgis-add-to-cartovista/issues
 repository=https://github.com/cartovista/qgis-add-to-cartovista
+homepage=https://cartovista.com/cartovista-qgis-plugin/
 # End of mandatory metadata
 
 # Recommended items:
@@ -23,9 +24,8 @@ hasProcessingProvider=no
 # changelog=
 
 # Tags are comma separated with spaces allowed
-tags=python
+tags=shared,collaboration,sharing,maps,publishing,public,comments,data,layers,realtime,cloud,media,browser,online,publication,webmapping,internet,webgis,capture,catalog,python
 
-homepage=https://github.com/cartovista/qgis-add-to-cartovista
 icon=assets/icon.png
 # experimental flag
 experimental=False
