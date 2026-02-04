@@ -352,7 +352,7 @@ class MapApi(object):
             collection_formats=collection_formats)
 
     def map_create_map_plugin(self, body, map_identifier, tenant_url_code, **kwargs):  # noqa: E501
-        """map_create_map_plugin  # noqa: E501
+        """Creates map plugin. Only usable by superadministrators.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -375,7 +375,7 @@ class MapApi(object):
             return data
 
     def map_create_map_plugin_with_http_info(self, body, map_identifier, tenant_url_code, **kwargs):  # noqa: E501
-        """map_create_map_plugin  # noqa: E501
+        """Creates map plugin. Only usable by superadministrators.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -889,7 +889,7 @@ class MapApi(object):
             collection_formats=collection_formats)
 
     def map_delete_map_plugin(self, map_identifier, plugin_identifier, tenant_url_code, **kwargs):  # noqa: E501
-        """map_delete_map_plugin  # noqa: E501
+        """Delete a map plugin. Only usable by superadministrators.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -912,7 +912,7 @@ class MapApi(object):
             return data
 
     def map_delete_map_plugin_with_http_info(self, map_identifier, plugin_identifier, tenant_url_code, **kwargs):  # noqa: E501
-        """map_delete_map_plugin  # noqa: E501
+        """Delete a map plugin. Only usable by superadministrators.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -3723,6 +3723,109 @@ class MapApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def map_transfer_maps(self, body, tenant_url_code, **kwargs):  # noqa: E501
+        """Clones maps from other organizations. Only usable by superadministrators.  # noqa: E501
+
+        `tenantUrlCode` is the destination organization.  The map ids can come from any organization other than the destination organization.  Owner id can be any user from the destination organization (optional).  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.map_transfer_maps(body, tenant_url_code, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param TransferMapsParameter body: (required)
+        :param str tenant_url_code: (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.map_transfer_maps_with_http_info(body, tenant_url_code, **kwargs)  # noqa: E501
+        else:
+            (data) = self.map_transfer_maps_with_http_info(body, tenant_url_code, **kwargs)  # noqa: E501
+            return data
+
+    def map_transfer_maps_with_http_info(self, body, tenant_url_code, **kwargs):  # noqa: E501
+        """Clones maps from other organizations. Only usable by superadministrators.  # noqa: E501
+
+        `tenantUrlCode` is the destination organization.  The map ids can come from any organization other than the destination organization.  Owner id can be any user from the destination organization (optional).  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.map_transfer_maps_with_http_info(body, tenant_url_code, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param TransferMapsParameter body: (required)
+        :param str tenant_url_code: (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['body', 'tenant_url_code']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method map_transfer_maps" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'body' is set
+        if ('body' not in params or
+                params['body'] is None):
+            raise ValueError("Missing the required parameter `body` when calling `map_transfer_maps`")  # noqa: E501
+        # verify the required parameter 'tenant_url_code' is set
+        if ('tenant_url_code' not in params or
+                params['tenant_url_code'] is None):
+            raise ValueError("Missing the required parameter `tenant_url_code` when calling `map_transfer_maps`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'tenant_url_code' in params:
+            path_params['tenantUrlCode'] = params['tenant_url_code']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['apiKey', 'bearer', 'secretKey']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/{tenantUrlCode}/api/v2/maps/transfer', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def map_update_map(self, body, map_id, tenant_url_code, **kwargs):  # noqa: E501
         """Updates a map properties based on the given parameters.  # noqa: E501
 
@@ -3950,7 +4053,7 @@ class MapApi(object):
             collection_formats=collection_formats)
 
     def map_update_map_identifier(self, body, map_identifier, tenant_url_code, **kwargs):  # noqa: E501
-        """Updates the map identifier.  # noqa: E501
+        """Updates the map identifier. Only usable by superadministrators.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -3973,7 +4076,7 @@ class MapApi(object):
             return data
 
     def map_update_map_identifier_with_http_info(self, body, map_identifier, tenant_url_code, **kwargs):  # noqa: E501
-        """Updates the map identifier.  # noqa: E501
+        """Updates the map identifier. Only usable by superadministrators.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True

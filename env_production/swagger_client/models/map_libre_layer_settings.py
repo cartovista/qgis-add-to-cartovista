@@ -30,7 +30,7 @@ class MapLibreLayerSettings(object):
     swagger_types = {
         'type': 'GeometryTypeEnum',
         'extent': 'ExtentDTO',
-        'style': 'object',
+        'style': 'LayerSettings',
         'src': 'str',
         'feature_id_attribute': 'str',
         'is_tiled': 'bool'
@@ -115,7 +115,7 @@ class MapLibreLayerSettings(object):
 
 
         :return: The style of this MapLibreLayerSettings.  # noqa: E501
-        :rtype: object
+        :rtype: LayerSettings
         """
         return self._style
 
@@ -125,7 +125,7 @@ class MapLibreLayerSettings(object):
 
 
         :param style: The style of this MapLibreLayerSettings.  # noqa: E501
-        :type: object
+        :type: LayerSettings
         """
 
         self._style = style

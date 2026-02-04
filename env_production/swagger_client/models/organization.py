@@ -40,8 +40,7 @@ class Organization(object):
         'froala_key': 'str',
         'disclaimers': 'list[TenantDisclaimer]',
         'invalidate_disclaimer_time': 'datetime',
-        'default_map_permissions': 'bool',
-        'default_data_permissions': 'bool'
+        'default_permissions': 'DefaultOrganizationPermissions'
     }
 
     attribute_map = {
@@ -57,11 +56,10 @@ class Organization(object):
         'froala_key': 'froalaKey',
         'disclaimers': 'disclaimers',
         'invalidate_disclaimer_time': 'invalidateDisclaimerTime',
-        'default_map_permissions': 'defaultMapPermissions',
-        'default_data_permissions': 'defaultDataPermissions'
+        'default_permissions': 'defaultPermissions'
     }
 
-    def __init__(self, name=None, default_language=None, primary_color=None, default_theme=None, logo_url=None, logo_icon_url=None, is_enterprise=None, url_code=None, open_id_providers=None, froala_key=None, disclaimers=None, invalidate_disclaimer_time=None, default_map_permissions=None, default_data_permissions=None):  # noqa: E501
+    def __init__(self, name=None, default_language=None, primary_color=None, default_theme=None, logo_url=None, logo_icon_url=None, is_enterprise=None, url_code=None, open_id_providers=None, froala_key=None, disclaimers=None, invalidate_disclaimer_time=None, default_permissions=None):  # noqa: E501
         """Organization - a model defined in Swagger"""  # noqa: E501
         self._name = None
         self._default_language = None
@@ -75,8 +73,7 @@ class Organization(object):
         self._froala_key = None
         self._disclaimers = None
         self._invalidate_disclaimer_time = None
-        self._default_map_permissions = None
-        self._default_data_permissions = None
+        self._default_permissions = None
         self.discriminator = None
         if name is not None:
             self.name = name
@@ -102,10 +99,8 @@ class Organization(object):
             self.disclaimers = disclaimers
         if invalidate_disclaimer_time is not None:
             self.invalidate_disclaimer_time = invalidate_disclaimer_time
-        if default_map_permissions is not None:
-            self.default_map_permissions = default_map_permissions
-        if default_data_permissions is not None:
-            self.default_data_permissions = default_data_permissions
+        if default_permissions is not None:
+            self.default_permissions = default_permissions
 
     @property
     def name(self):
@@ -360,46 +355,25 @@ class Organization(object):
         self._invalidate_disclaimer_time = invalidate_disclaimer_time
 
     @property
-    def default_map_permissions(self):
-        """Gets the default_map_permissions of this Organization.  # noqa: E501
+    def default_permissions(self):
+        """Gets the default_permissions of this Organization.  # noqa: E501
 
 
-        :return: The default_map_permissions of this Organization.  # noqa: E501
-        :rtype: bool
+        :return: The default_permissions of this Organization.  # noqa: E501
+        :rtype: DefaultOrganizationPermissions
         """
-        return self._default_map_permissions
+        return self._default_permissions
 
-    @default_map_permissions.setter
-    def default_map_permissions(self, default_map_permissions):
-        """Sets the default_map_permissions of this Organization.
-
-
-        :param default_map_permissions: The default_map_permissions of this Organization.  # noqa: E501
-        :type: bool
-        """
-
-        self._default_map_permissions = default_map_permissions
-
-    @property
-    def default_data_permissions(self):
-        """Gets the default_data_permissions of this Organization.  # noqa: E501
+    @default_permissions.setter
+    def default_permissions(self, default_permissions):
+        """Sets the default_permissions of this Organization.
 
 
-        :return: The default_data_permissions of this Organization.  # noqa: E501
-        :rtype: bool
-        """
-        return self._default_data_permissions
-
-    @default_data_permissions.setter
-    def default_data_permissions(self, default_data_permissions):
-        """Sets the default_data_permissions of this Organization.
-
-
-        :param default_data_permissions: The default_data_permissions of this Organization.  # noqa: E501
-        :type: bool
+        :param default_permissions: The default_permissions of this Organization.  # noqa: E501
+        :type: DefaultOrganizationPermissions
         """
 
-        self._default_data_permissions = default_data_permissions
+        self._default_permissions = default_permissions
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -1765,17 +1765,17 @@ class UserApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def user_update_user(self, body, user_identifier, tenant_url_code, **kwargs):  # noqa: E501
+    def user_update_user(self, body, user_id, tenant_url_code, **kwargs):  # noqa: E501
         """Updates the user.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.user_update_user(body, user_identifier, tenant_url_code, async_req=True)
+        >>> thread = api.user_update_user(body, user_id, tenant_url_code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param UserUpdateParameter body: (required)
-        :param str user_identifier: (required)
+        :param str user_id: (required)
         :param str tenant_url_code: (required)
         :return: User
                  If the method is called asynchronously,
@@ -1783,29 +1783,29 @@ class UserApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.user_update_user_with_http_info(body, user_identifier, tenant_url_code, **kwargs)  # noqa: E501
+            return self.user_update_user_with_http_info(body, user_id, tenant_url_code, **kwargs)  # noqa: E501
         else:
-            (data) = self.user_update_user_with_http_info(body, user_identifier, tenant_url_code, **kwargs)  # noqa: E501
+            (data) = self.user_update_user_with_http_info(body, user_id, tenant_url_code, **kwargs)  # noqa: E501
             return data
 
-    def user_update_user_with_http_info(self, body, user_identifier, tenant_url_code, **kwargs):  # noqa: E501
+    def user_update_user_with_http_info(self, body, user_id, tenant_url_code, **kwargs):  # noqa: E501
         """Updates the user.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.user_update_user_with_http_info(body, user_identifier, tenant_url_code, async_req=True)
+        >>> thread = api.user_update_user_with_http_info(body, user_id, tenant_url_code, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param UserUpdateParameter body: (required)
-        :param str user_identifier: (required)
+        :param str user_id: (required)
         :param str tenant_url_code: (required)
         :return: User
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'user_identifier', 'tenant_url_code']  # noqa: E501
+        all_params = ['body', 'user_id', 'tenant_url_code']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1824,10 +1824,10 @@ class UserApi(object):
         if ('body' not in params or
                 params['body'] is None):
             raise ValueError("Missing the required parameter `body` when calling `user_update_user`")  # noqa: E501
-        # verify the required parameter 'user_identifier' is set
-        if ('user_identifier' not in params or
-                params['user_identifier'] is None):
-            raise ValueError("Missing the required parameter `user_identifier` when calling `user_update_user`")  # noqa: E501
+        # verify the required parameter 'user_id' is set
+        if ('user_id' not in params or
+                params['user_id'] is None):
+            raise ValueError("Missing the required parameter `user_id` when calling `user_update_user`")  # noqa: E501
         # verify the required parameter 'tenant_url_code' is set
         if ('tenant_url_code' not in params or
                 params['tenant_url_code'] is None):
@@ -1836,8 +1836,8 @@ class UserApi(object):
         collection_formats = {}
 
         path_params = {}
-        if 'user_identifier' in params:
-            path_params['UserIdentifier'] = params['user_identifier']  # noqa: E501
+        if 'user_id' in params:
+            path_params['userId'] = params['user_id']  # noqa: E501
         if 'tenant_url_code' in params:
             path_params['tenantUrlCode'] = params['tenant_url_code']  # noqa: E501
 
@@ -1863,7 +1863,7 @@ class UserApi(object):
         auth_settings = ['apiKey', 'bearer', 'secretKey']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{tenantUrlCode}/api/v2/users/{UserIdentifier}', 'PATCH',
+            '/{tenantUrlCode}/api/v2/users/{userId}', 'PATCH',
             path_params,
             query_params,
             header_params,

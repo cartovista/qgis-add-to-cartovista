@@ -27,6 +27,7 @@ class GridLayerSettingsStyleMode(object):
     _0 = "0"
     _1 = "1"
     _2 = "2"
+    _3 = "3"
     """
     Attributes:
       swagger_types (dict): The key is attribute name

@@ -52,7 +52,8 @@ class DataColumn(object):
         'is_used_in_cvs': 'bool',
         'internal_system_column': 'bool',
         'editor_settings': 'EditorSettings',
-        'date_format': 'DateFormat'
+        'date_format': 'DateFormat',
+        'separate_thousands': 'bool'
     }
 
     attribute_map = {
@@ -80,10 +81,11 @@ class DataColumn(object):
         'is_used_in_cvs': 'isUsedInCVS',
         'internal_system_column': 'internalSystemColumn',
         'editor_settings': 'editorSettings',
-        'date_format': 'dateFormat'
+        'date_format': 'dateFormat',
+        'separate_thousands': 'separateThousands'
     }
 
-    def __init__(self, system_identifier=None, unique_identifier=None, data_table_identifier=None, carto_vista_data_type=None, name=None, original_name=None, description=None, metadata=None, units=None, unit_placement=None, aggregation_type=None, mappable=None, precision=None, round_to_precision=None, time_stamp=None, time_stamp_accuracy=None, not_available_values=None, value_to_convert=None, only_has_unique_values=None, is_used_in_data_table_join=None, is_used_in_poi_analysis=None, is_used_in_cvs=None, internal_system_column=None, editor_settings=None, date_format=None):  # noqa: E501
+    def __init__(self, system_identifier=None, unique_identifier=None, data_table_identifier=None, carto_vista_data_type=None, name=None, original_name=None, description=None, metadata=None, units=None, unit_placement=None, aggregation_type=None, mappable=None, precision=None, round_to_precision=None, time_stamp=None, time_stamp_accuracy=None, not_available_values=None, value_to_convert=None, only_has_unique_values=None, is_used_in_data_table_join=None, is_used_in_poi_analysis=None, is_used_in_cvs=None, internal_system_column=None, editor_settings=None, date_format=None, separate_thousands=None):  # noqa: E501
         """DataColumn - a model defined in Swagger"""  # noqa: E501
         self._system_identifier = None
         self._unique_identifier = None
@@ -110,6 +112,7 @@ class DataColumn(object):
         self._internal_system_column = None
         self._editor_settings = None
         self._date_format = None
+        self._separate_thousands = None
         self.discriminator = None
         if system_identifier is not None:
             self.system_identifier = system_identifier
@@ -161,6 +164,8 @@ class DataColumn(object):
             self.editor_settings = editor_settings
         if date_format is not None:
             self.date_format = date_format
+        if separate_thousands is not None:
+            self.separate_thousands = separate_thousands
 
     @property
     def system_identifier(self):
@@ -686,6 +691,27 @@ class DataColumn(object):
         """
 
         self._date_format = date_format
+
+    @property
+    def separate_thousands(self):
+        """Gets the separate_thousands of this DataColumn.  # noqa: E501
+
+
+        :return: The separate_thousands of this DataColumn.  # noqa: E501
+        :rtype: bool
+        """
+        return self._separate_thousands
+
+    @separate_thousands.setter
+    def separate_thousands(self, separate_thousands):
+        """Sets the separate_thousands of this DataColumn.
+
+
+        :param separate_thousands: The separate_thousands of this DataColumn.  # noqa: E501
+        :type: bool
+        """
+
+        self._separate_thousands = separate_thousands
 
     def to_dict(self):
         """Returns the model properties as a dict"""

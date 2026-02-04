@@ -33,7 +33,8 @@ class IsochroneParams(object):
         'range': 'float',
         'range_type': 'IsochroneRangeType',
         'mode': 'TransportTypeEnum',
-        'departure_time': 'str'
+        'outbound': 'bool',
+        'time': 'str'
     }
 
     attribute_map = {
@@ -42,17 +43,19 @@ class IsochroneParams(object):
         'range': 'range',
         'range_type': 'rangeType',
         'mode': 'mode',
-        'departure_time': 'departureTime'
+        'outbound': 'outbound',
+        'time': 'time'
     }
 
-    def __init__(self, longitude=None, latitude=None, range=None, range_type=None, mode=None, departure_time=None):  # noqa: E501
+    def __init__(self, longitude=None, latitude=None, range=None, range_type=None, mode=None, outbound=None, time=None):  # noqa: E501
         """IsochroneParams - a model defined in Swagger"""  # noqa: E501
         self._longitude = None
         self._latitude = None
         self._range = None
         self._range_type = None
         self._mode = None
-        self._departure_time = None
+        self._outbound = None
+        self._time = None
         self.discriminator = None
         if longitude is not None:
             self.longitude = longitude
@@ -64,8 +67,10 @@ class IsochroneParams(object):
             self.range_type = range_type
         if mode is not None:
             self.mode = mode
-        if departure_time is not None:
-            self.departure_time = departure_time
+        if outbound is not None:
+            self.outbound = outbound
+        if time is not None:
+            self.time = time
 
     @property
     def longitude(self):
@@ -173,25 +178,46 @@ class IsochroneParams(object):
         self._mode = mode
 
     @property
-    def departure_time(self):
-        """Gets the departure_time of this IsochroneParams.  # noqa: E501
+    def outbound(self):
+        """Gets the outbound of this IsochroneParams.  # noqa: E501
 
 
-        :return: The departure_time of this IsochroneParams.  # noqa: E501
+        :return: The outbound of this IsochroneParams.  # noqa: E501
+        :rtype: bool
+        """
+        return self._outbound
+
+    @outbound.setter
+    def outbound(self, outbound):
+        """Sets the outbound of this IsochroneParams.
+
+
+        :param outbound: The outbound of this IsochroneParams.  # noqa: E501
+        :type: bool
+        """
+
+        self._outbound = outbound
+
+    @property
+    def time(self):
+        """Gets the time of this IsochroneParams.  # noqa: E501
+
+
+        :return: The time of this IsochroneParams.  # noqa: E501
         :rtype: str
         """
-        return self._departure_time
+        return self._time
 
-    @departure_time.setter
-    def departure_time(self, departure_time):
-        """Sets the departure_time of this IsochroneParams.
+    @time.setter
+    def time(self, time):
+        """Sets the time of this IsochroneParams.
 
 
-        :param departure_time: The departure_time of this IsochroneParams.  # noqa: E501
+        :param time: The time of this IsochroneParams.  # noqa: E501
         :type: str
         """
 
-        self._departure_time = departure_time
+        self._time = time
 
     def to_dict(self):
         """Returns the model properties as a dict"""

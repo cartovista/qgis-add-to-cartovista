@@ -28,45 +28,45 @@ class MultipleMatchesColumn(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'column_name': 'str',
+        'poi_column_name': 'str',
         'names': 'list[str]'
     }
 
     attribute_map = {
-        'column_name': 'columnName',
+        'poi_column_name': 'poiColumnName',
         'names': 'names'
     }
 
-    def __init__(self, column_name=None, names=None):  # noqa: E501
+    def __init__(self, poi_column_name=None, names=None):  # noqa: E501
         """MultipleMatchesColumn - a model defined in Swagger"""  # noqa: E501
-        self._column_name = None
+        self._poi_column_name = None
         self._names = None
         self.discriminator = None
-        if column_name is not None:
-            self.column_name = column_name
+        if poi_column_name is not None:
+            self.poi_column_name = poi_column_name
         if names is not None:
             self.names = names
 
     @property
-    def column_name(self):
-        """Gets the column_name of this MultipleMatchesColumn.  # noqa: E501
+    def poi_column_name(self):
+        """Gets the poi_column_name of this MultipleMatchesColumn.  # noqa: E501
 
 
-        :return: The column_name of this MultipleMatchesColumn.  # noqa: E501
+        :return: The poi_column_name of this MultipleMatchesColumn.  # noqa: E501
         :rtype: str
         """
-        return self._column_name
+        return self._poi_column_name
 
-    @column_name.setter
-    def column_name(self, column_name):
-        """Sets the column_name of this MultipleMatchesColumn.
+    @poi_column_name.setter
+    def poi_column_name(self, poi_column_name):
+        """Sets the poi_column_name of this MultipleMatchesColumn.
 
 
-        :param column_name: The column_name of this MultipleMatchesColumn.  # noqa: E501
+        :param poi_column_name: The poi_column_name of this MultipleMatchesColumn.  # noqa: E501
         :type: str
         """
 
-        self._column_name = column_name
+        self._poi_column_name = poi_column_name
 
     @property
     def names(self):

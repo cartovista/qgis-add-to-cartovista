@@ -30,7 +30,10 @@ class PoiAnalysisData(object):
     swagger_types = {
         'poi_feature_id': 'str',
         'scenario': 'str',
+        'cluster': 'str',
+        'subcluster': 'str',
         'year': 'float',
+        'case_type': 'str',
         'name': 'str',
         'constraint': 'str',
         'contingency': 'str',
@@ -57,7 +60,10 @@ class PoiAnalysisData(object):
     attribute_map = {
         'poi_feature_id': 'poiFeatureId',
         'scenario': 'scenario',
+        'cluster': 'cluster',
+        'subcluster': 'subcluster',
         'year': 'year',
+        'case_type': 'caseType',
         'name': 'name',
         'constraint': 'constraint',
         'contingency': 'contingency',
@@ -81,11 +87,14 @@ class PoiAnalysisData(object):
         'constraint_id': 'constraintId'
     }
 
-    def __init__(self, poi_feature_id=None, scenario=None, year=None, name=None, constraint=None, contingency=None, mw_available=None, dfax_percent=None, mw_impact=None, impact_percent=None, loading_before_percent=None, loading_after_percent=None, initial_loading=None, rating=None, fcitc=None, transmission_id=None, worst_dispatch_capacity=None, worst_dispatch_loading=None, worst_dispatch_loading_percent=None, post_project_loading=None, post_project_loading_percent=None, worst_post_project_loading=None, worst_post_project_loading_percent=None, constraint_id=None):  # noqa: E501
+    def __init__(self, poi_feature_id=None, scenario=None, cluster=None, subcluster=None, year=None, case_type=None, name=None, constraint=None, contingency=None, mw_available=None, dfax_percent=None, mw_impact=None, impact_percent=None, loading_before_percent=None, loading_after_percent=None, initial_loading=None, rating=None, fcitc=None, transmission_id=None, worst_dispatch_capacity=None, worst_dispatch_loading=None, worst_dispatch_loading_percent=None, post_project_loading=None, post_project_loading_percent=None, worst_post_project_loading=None, worst_post_project_loading_percent=None, constraint_id=None):  # noqa: E501
         """PoiAnalysisData - a model defined in Swagger"""  # noqa: E501
         self._poi_feature_id = None
         self._scenario = None
+        self._cluster = None
+        self._subcluster = None
         self._year = None
+        self._case_type = None
         self._name = None
         self._constraint = None
         self._contingency = None
@@ -112,8 +121,14 @@ class PoiAnalysisData(object):
             self.poi_feature_id = poi_feature_id
         if scenario is not None:
             self.scenario = scenario
+        if cluster is not None:
+            self.cluster = cluster
+        if subcluster is not None:
+            self.subcluster = subcluster
         if year is not None:
             self.year = year
+        if case_type is not None:
+            self.case_type = case_type
         if name is not None:
             self.name = name
         if constraint is not None:
@@ -200,6 +215,48 @@ class PoiAnalysisData(object):
         self._scenario = scenario
 
     @property
+    def cluster(self):
+        """Gets the cluster of this PoiAnalysisData.  # noqa: E501
+
+
+        :return: The cluster of this PoiAnalysisData.  # noqa: E501
+        :rtype: str
+        """
+        return self._cluster
+
+    @cluster.setter
+    def cluster(self, cluster):
+        """Sets the cluster of this PoiAnalysisData.
+
+
+        :param cluster: The cluster of this PoiAnalysisData.  # noqa: E501
+        :type: str
+        """
+
+        self._cluster = cluster
+
+    @property
+    def subcluster(self):
+        """Gets the subcluster of this PoiAnalysisData.  # noqa: E501
+
+
+        :return: The subcluster of this PoiAnalysisData.  # noqa: E501
+        :rtype: str
+        """
+        return self._subcluster
+
+    @subcluster.setter
+    def subcluster(self, subcluster):
+        """Sets the subcluster of this PoiAnalysisData.
+
+
+        :param subcluster: The subcluster of this PoiAnalysisData.  # noqa: E501
+        :type: str
+        """
+
+        self._subcluster = subcluster
+
+    @property
     def year(self):
         """Gets the year of this PoiAnalysisData.  # noqa: E501
 
@@ -219,6 +276,27 @@ class PoiAnalysisData(object):
         """
 
         self._year = year
+
+    @property
+    def case_type(self):
+        """Gets the case_type of this PoiAnalysisData.  # noqa: E501
+
+
+        :return: The case_type of this PoiAnalysisData.  # noqa: E501
+        :rtype: str
+        """
+        return self._case_type
+
+    @case_type.setter
+    def case_type(self, case_type):
+        """Sets the case_type of this PoiAnalysisData.
+
+
+        :param case_type: The case_type of this PoiAnalysisData.  # noqa: E501
+        :type: str
+        """
+
+        self._case_type = case_type
 
     @property
     def name(self):

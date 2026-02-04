@@ -37,7 +37,6 @@ class Group(object):
         'creation_time': 'datetime',
         'last_modification_time': 'datetime',
         'provider': 'SecurityProvider',
-        'provider_status': 'ProviderStatus',
         'provider_name': 'str',
         'users': 'list[User]',
         'permissions': 'list[PermissionDTO]'
@@ -53,13 +52,12 @@ class Group(object):
         'creation_time': 'creationTime',
         'last_modification_time': 'lastModificationTime',
         'provider': 'provider',
-        'provider_status': 'providerStatus',
         'provider_name': 'providerName',
         'users': 'users',
         'permissions': 'permissions'
     }
 
-    def __init__(self, system_identifier=None, unique_identifier=None, name=None, description=None, path=None, folder_id=None, creation_time=None, last_modification_time=None, provider=None, provider_status=None, provider_name=None, users=None, permissions=None):  # noqa: E501
+    def __init__(self, system_identifier=None, unique_identifier=None, name=None, description=None, path=None, folder_id=None, creation_time=None, last_modification_time=None, provider=None, provider_name=None, users=None, permissions=None):  # noqa: E501
         """Group - a model defined in Swagger"""  # noqa: E501
         self._system_identifier = None
         self._unique_identifier = None
@@ -70,7 +68,6 @@ class Group(object):
         self._creation_time = None
         self._last_modification_time = None
         self._provider = None
-        self._provider_status = None
         self._provider_name = None
         self._users = None
         self._permissions = None
@@ -93,8 +90,6 @@ class Group(object):
             self.last_modification_time = last_modification_time
         if provider is not None:
             self.provider = provider
-        if provider_status is not None:
-            self.provider_status = provider_status
         if provider_name is not None:
             self.provider_name = provider_name
         if users is not None:
@@ -290,27 +285,6 @@ class Group(object):
         """
 
         self._provider = provider
-
-    @property
-    def provider_status(self):
-        """Gets the provider_status of this Group.  # noqa: E501
-
-
-        :return: The provider_status of this Group.  # noqa: E501
-        :rtype: ProviderStatus
-        """
-        return self._provider_status
-
-    @provider_status.setter
-    def provider_status(self, provider_status):
-        """Sets the provider_status of this Group.
-
-
-        :param provider_status: The provider_status of this Group.  # noqa: E501
-        :type: ProviderStatus
-        """
-
-        self._provider_status = provider_status
 
     @property
     def provider_name(self):

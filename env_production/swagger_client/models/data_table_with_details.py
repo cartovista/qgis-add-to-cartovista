@@ -30,7 +30,7 @@ class DataTableWithDetails(object):
     swagger_types = {
         'data_table': 'DataTable',
         'maps': 'list[Map]',
-        'layers': 'list[Layer]',
+        'layers': 'list[JoinedLayer]',
         'permissions': 'list[PermissionPairComplexDTO]',
         'data_columns': 'list[DataColumn]'
     }
@@ -110,7 +110,7 @@ class DataTableWithDetails(object):
 
 
         :return: The layers of this DataTableWithDetails.  # noqa: E501
-        :rtype: list[Layer]
+        :rtype: list[JoinedLayer]
         """
         return self._layers
 
@@ -120,7 +120,7 @@ class DataTableWithDetails(object):
 
 
         :param layers: The layers of this DataTableWithDetails.  # noqa: E501
-        :type: list[Layer]
+        :type: list[JoinedLayer]
         """
 
         self._layers = layers

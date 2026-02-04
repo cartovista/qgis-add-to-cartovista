@@ -30,26 +30,20 @@ class UpdateOrganizationParameter(object):
     swagger_types = {
         'default_language': 'LanguageEnum',
         'primary_color': 'str',
-        'default_theme': 'ThemeEnum',
-        'default_map_permissions': 'bool',
-        'default_data_permissions': 'bool'
+        'default_theme': 'ThemeEnum'
     }
 
     attribute_map = {
         'default_language': 'defaultLanguage',
         'primary_color': 'primaryColor',
-        'default_theme': 'defaultTheme',
-        'default_map_permissions': 'defaultMapPermissions',
-        'default_data_permissions': 'defaultDataPermissions'
+        'default_theme': 'defaultTheme'
     }
 
-    def __init__(self, default_language=None, primary_color=None, default_theme=None, default_map_permissions=None, default_data_permissions=None):  # noqa: E501
+    def __init__(self, default_language=None, primary_color=None, default_theme=None):  # noqa: E501
         """UpdateOrganizationParameter - a model defined in Swagger"""  # noqa: E501
         self._default_language = None
         self._primary_color = None
         self._default_theme = None
-        self._default_map_permissions = None
-        self._default_data_permissions = None
         self.discriminator = None
         if default_language is not None:
             self.default_language = default_language
@@ -57,10 +51,6 @@ class UpdateOrganizationParameter(object):
             self.primary_color = primary_color
         if default_theme is not None:
             self.default_theme = default_theme
-        if default_map_permissions is not None:
-            self.default_map_permissions = default_map_permissions
-        if default_data_permissions is not None:
-            self.default_data_permissions = default_data_permissions
 
     @property
     def default_language(self):
@@ -124,48 +114,6 @@ class UpdateOrganizationParameter(object):
         """
 
         self._default_theme = default_theme
-
-    @property
-    def default_map_permissions(self):
-        """Gets the default_map_permissions of this UpdateOrganizationParameter.  # noqa: E501
-
-
-        :return: The default_map_permissions of this UpdateOrganizationParameter.  # noqa: E501
-        :rtype: bool
-        """
-        return self._default_map_permissions
-
-    @default_map_permissions.setter
-    def default_map_permissions(self, default_map_permissions):
-        """Sets the default_map_permissions of this UpdateOrganizationParameter.
-
-
-        :param default_map_permissions: The default_map_permissions of this UpdateOrganizationParameter.  # noqa: E501
-        :type: bool
-        """
-
-        self._default_map_permissions = default_map_permissions
-
-    @property
-    def default_data_permissions(self):
-        """Gets the default_data_permissions of this UpdateOrganizationParameter.  # noqa: E501
-
-
-        :return: The default_data_permissions of this UpdateOrganizationParameter.  # noqa: E501
-        :rtype: bool
-        """
-        return self._default_data_permissions
-
-    @default_data_permissions.setter
-    def default_data_permissions(self, default_data_permissions):
-        """Sets the default_data_permissions of this UpdateOrganizationParameter.
-
-
-        :param default_data_permissions: The default_data_permissions of this UpdateOrganizationParameter.  # noqa: E501
-        :type: bool
-        """
-
-        self._default_data_permissions = default_data_permissions
 
     def to_dict(self):
         """Returns the model properties as a dict"""
