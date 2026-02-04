@@ -762,6 +762,7 @@ class DataTableApi(object):
     def data_table_delete_join(self, body, join_id, tenant_url_code, **kwargs):  # noqa: E501
         """Deletes a join between a table and a layer.  # noqa: E501
 
+        If `objectType` is `DATA_TABLE`, `objectId` must be a layer's table id,  If `objectType` is `SPATIAL_METADATA`, `objectId` is must be a layer id.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.data_table_delete_join(body, join_id, tenant_url_code, async_req=True)
@@ -785,6 +786,7 @@ class DataTableApi(object):
     def data_table_delete_join_with_http_info(self, body, join_id, tenant_url_code, **kwargs):  # noqa: E501
         """Deletes a join between a table and a layer.  # noqa: E501
 
+        If `objectType` is `DATA_TABLE`, `objectId` must be a layer's table id,  If `objectType` is `SPATIAL_METADATA`, `objectId` is must be a layer id.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.data_table_delete_join_with_http_info(body, join_id, tenant_url_code, async_req=True)
@@ -1618,7 +1620,7 @@ class DataTableApi(object):
         :param async_req bool
         :param str data_table_identifier: (required)
         :param str tenant_url_code: (required)
-        :return: list[Layer]
+        :return: list[JoinedLayer]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1640,7 +1642,7 @@ class DataTableApi(object):
         :param async_req bool
         :param str data_table_identifier: (required)
         :param str tenant_url_code: (required)
-        :return: list[Layer]
+        :return: list[JoinedLayer]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1700,7 +1702,7 @@ class DataTableApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='list[Layer]',  # noqa: E501
+            response_type='list[JoinedLayer]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

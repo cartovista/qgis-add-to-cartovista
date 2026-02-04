@@ -28,45 +28,97 @@ class UpdateLayerFromFileParameter(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'file_description': 'FileDescription',
+        'upload_id': 'str',
+        'column_numbers_to_keep': 'list[int]',
+        'sheet_name': 'str',
         'is_append': 'bool'
     }
 
     attribute_map = {
-        'file_description': 'fileDescription',
+        'upload_id': 'uploadId',
+        'column_numbers_to_keep': 'columnNumbersToKeep',
+        'sheet_name': 'sheetName',
         'is_append': 'isAppend'
     }
 
-    def __init__(self, file_description=None, is_append=None):  # noqa: E501
+    def __init__(self, upload_id=None, column_numbers_to_keep=None, sheet_name=None, is_append=None):  # noqa: E501
         """UpdateLayerFromFileParameter - a model defined in Swagger"""  # noqa: E501
-        self._file_description = None
+        self._upload_id = None
+        self._column_numbers_to_keep = None
+        self._sheet_name = None
         self._is_append = None
         self.discriminator = None
-        if file_description is not None:
-            self.file_description = file_description
+        if upload_id is not None:
+            self.upload_id = upload_id
+        if column_numbers_to_keep is not None:
+            self.column_numbers_to_keep = column_numbers_to_keep
+        if sheet_name is not None:
+            self.sheet_name = sheet_name
         if is_append is not None:
             self.is_append = is_append
 
     @property
-    def file_description(self):
-        """Gets the file_description of this UpdateLayerFromFileParameter.  # noqa: E501
+    def upload_id(self):
+        """Gets the upload_id of this UpdateLayerFromFileParameter.  # noqa: E501
 
 
-        :return: The file_description of this UpdateLayerFromFileParameter.  # noqa: E501
-        :rtype: FileDescription
+        :return: The upload_id of this UpdateLayerFromFileParameter.  # noqa: E501
+        :rtype: str
         """
-        return self._file_description
+        return self._upload_id
 
-    @file_description.setter
-    def file_description(self, file_description):
-        """Sets the file_description of this UpdateLayerFromFileParameter.
+    @upload_id.setter
+    def upload_id(self, upload_id):
+        """Sets the upload_id of this UpdateLayerFromFileParameter.
 
 
-        :param file_description: The file_description of this UpdateLayerFromFileParameter.  # noqa: E501
-        :type: FileDescription
+        :param upload_id: The upload_id of this UpdateLayerFromFileParameter.  # noqa: E501
+        :type: str
         """
 
-        self._file_description = file_description
+        self._upload_id = upload_id
+
+    @property
+    def column_numbers_to_keep(self):
+        """Gets the column_numbers_to_keep of this UpdateLayerFromFileParameter.  # noqa: E501
+
+
+        :return: The column_numbers_to_keep of this UpdateLayerFromFileParameter.  # noqa: E501
+        :rtype: list[int]
+        """
+        return self._column_numbers_to_keep
+
+    @column_numbers_to_keep.setter
+    def column_numbers_to_keep(self, column_numbers_to_keep):
+        """Sets the column_numbers_to_keep of this UpdateLayerFromFileParameter.
+
+
+        :param column_numbers_to_keep: The column_numbers_to_keep of this UpdateLayerFromFileParameter.  # noqa: E501
+        :type: list[int]
+        """
+
+        self._column_numbers_to_keep = column_numbers_to_keep
+
+    @property
+    def sheet_name(self):
+        """Gets the sheet_name of this UpdateLayerFromFileParameter.  # noqa: E501
+
+
+        :return: The sheet_name of this UpdateLayerFromFileParameter.  # noqa: E501
+        :rtype: str
+        """
+        return self._sheet_name
+
+    @sheet_name.setter
+    def sheet_name(self, sheet_name):
+        """Sets the sheet_name of this UpdateLayerFromFileParameter.
+
+
+        :param sheet_name: The sheet_name of this UpdateLayerFromFileParameter.  # noqa: E501
+        :type: str
+        """
+
+        self._sheet_name = sheet_name
 
     @property
     def is_append(self):

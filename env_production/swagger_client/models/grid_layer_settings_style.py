@@ -30,7 +30,9 @@ class GridLayerSettingsStyle(object):
     swagger_types = {
         'mode': 'GridLayerSettingsStyleMode',
         'values': 'list[GridLayerSettingsStyleValue]',
+        'class_values': 'list[GridLayerSettingsClassStyleValue]',
         'color_palette': 'str',
+        'class_color_palette': 'str',
         'arrow_color': 'str',
         'shadow': 'bool',
         'smooth_rendering': 'bool',
@@ -42,7 +44,9 @@ class GridLayerSettingsStyle(object):
     attribute_map = {
         'mode': 'mode',
         'values': 'values',
+        'class_values': 'classValues',
         'color_palette': 'colorPalette',
+        'class_color_palette': 'classColorPalette',
         'arrow_color': 'arrowColor',
         'shadow': 'shadow',
         'smooth_rendering': 'smoothRendering',
@@ -51,11 +55,13 @@ class GridLayerSettingsStyle(object):
         'max': 'max'
     }
 
-    def __init__(self, mode=None, values=None, color_palette=None, arrow_color=None, shadow=None, smooth_rendering=None, rotation_unit=None, min=None, max=None):  # noqa: E501
+    def __init__(self, mode=None, values=None, class_values=None, color_palette=None, class_color_palette=None, arrow_color=None, shadow=None, smooth_rendering=None, rotation_unit=None, min=None, max=None):  # noqa: E501
         """GridLayerSettingsStyle - a model defined in Swagger"""  # noqa: E501
         self._mode = None
         self._values = None
+        self._class_values = None
         self._color_palette = None
+        self._class_color_palette = None
         self._arrow_color = None
         self._shadow = None
         self._smooth_rendering = None
@@ -67,8 +73,12 @@ class GridLayerSettingsStyle(object):
             self.mode = mode
         if values is not None:
             self.values = values
+        if class_values is not None:
+            self.class_values = class_values
         if color_palette is not None:
             self.color_palette = color_palette
+        if class_color_palette is not None:
+            self.class_color_palette = class_color_palette
         if arrow_color is not None:
             self.arrow_color = arrow_color
         if shadow is not None:
@@ -125,6 +135,27 @@ class GridLayerSettingsStyle(object):
         self._values = values
 
     @property
+    def class_values(self):
+        """Gets the class_values of this GridLayerSettingsStyle.  # noqa: E501
+
+
+        :return: The class_values of this GridLayerSettingsStyle.  # noqa: E501
+        :rtype: list[GridLayerSettingsClassStyleValue]
+        """
+        return self._class_values
+
+    @class_values.setter
+    def class_values(self, class_values):
+        """Sets the class_values of this GridLayerSettingsStyle.
+
+
+        :param class_values: The class_values of this GridLayerSettingsStyle.  # noqa: E501
+        :type: list[GridLayerSettingsClassStyleValue]
+        """
+
+        self._class_values = class_values
+
+    @property
     def color_palette(self):
         """Gets the color_palette of this GridLayerSettingsStyle.  # noqa: E501
 
@@ -144,6 +175,27 @@ class GridLayerSettingsStyle(object):
         """
 
         self._color_palette = color_palette
+
+    @property
+    def class_color_palette(self):
+        """Gets the class_color_palette of this GridLayerSettingsStyle.  # noqa: E501
+
+
+        :return: The class_color_palette of this GridLayerSettingsStyle.  # noqa: E501
+        :rtype: str
+        """
+        return self._class_color_palette
+
+    @class_color_palette.setter
+    def class_color_palette(self, class_color_palette):
+        """Sets the class_color_palette of this GridLayerSettingsStyle.
+
+
+        :param class_color_palette: The class_color_palette of this GridLayerSettingsStyle.  # noqa: E501
+        :type: str
+        """
+
+        self._class_color_palette = class_color_palette
 
     @property
     def arrow_color(self):

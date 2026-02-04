@@ -43,7 +43,6 @@ class User(object):
         'creation_time': 'datetime',
         'modification_time': 'datetime',
         'security_provider': 'str',
-        'provider_status': 'str',
         'provider_name': 'str',
         'app_name': 'str',
         'access_failed_count': 'int',
@@ -72,7 +71,6 @@ class User(object):
         'creation_time': 'creationTime',
         'modification_time': 'modificationTime',
         'security_provider': 'securityProvider',
-        'provider_status': 'providerStatus',
         'provider_name': 'providerName',
         'app_name': 'appName',
         'access_failed_count': 'accessFailedCount',
@@ -85,7 +83,7 @@ class User(object):
         'disclaimer_accepted_time': 'disclaimerAcceptedTime'
     }
 
-    def __init__(self, security_identifier=None, security_provider_identity=None, email_address=None, user_name=None, display_name=None, first_name=None, last_name=None, notes=None, roles=None, enabled=None, last_login_time=None, last_visit=None, creation_time=None, modification_time=None, security_provider=None, provider_status=None, provider_name=None, app_name=None, access_failed_count=None, lockout_reason=None, lockout_start_time=None, thumbnail_url=None, can_dismiss_subscription_banner=None, did_dimiss_schedule_notice=None, groups=None, disclaimer_accepted_time=None):  # noqa: E501
+    def __init__(self, security_identifier=None, security_provider_identity=None, email_address=None, user_name=None, display_name=None, first_name=None, last_name=None, notes=None, roles=None, enabled=None, last_login_time=None, last_visit=None, creation_time=None, modification_time=None, security_provider=None, provider_name=None, app_name=None, access_failed_count=None, lockout_reason=None, lockout_start_time=None, thumbnail_url=None, can_dismiss_subscription_banner=None, did_dimiss_schedule_notice=None, groups=None, disclaimer_accepted_time=None):  # noqa: E501
         """User - a model defined in Swagger"""  # noqa: E501
         self._security_identifier = None
         self._security_provider_identity = None
@@ -102,7 +100,6 @@ class User(object):
         self._creation_time = None
         self._modification_time = None
         self._security_provider = None
-        self._provider_status = None
         self._provider_name = None
         self._app_name = None
         self._access_failed_count = None
@@ -144,8 +141,6 @@ class User(object):
             self.modification_time = modification_time
         if security_provider is not None:
             self.security_provider = security_provider
-        if provider_status is not None:
-            self.provider_status = provider_status
         if provider_name is not None:
             self.provider_name = provider_name
         if app_name is not None:
@@ -481,27 +476,6 @@ class User(object):
         """
 
         self._security_provider = security_provider
-
-    @property
-    def provider_status(self):
-        """Gets the provider_status of this User.  # noqa: E501
-
-
-        :return: The provider_status of this User.  # noqa: E501
-        :rtype: str
-        """
-        return self._provider_status
-
-    @provider_status.setter
-    def provider_status(self, provider_status):
-        """Sets the provider_status of this User.
-
-
-        :param provider_status: The provider_status of this User.  # noqa: E501
-        :type: str
-        """
-
-        self._provider_status = provider_status
 
     @property
     def provider_name(self):

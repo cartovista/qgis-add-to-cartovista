@@ -52,7 +52,8 @@ class DataTableColumnDTO(object):
         'is_used_in_cvs': 'bool',
         'only_has_unique_values': 'bool',
         'not_available_values': 'bool',
-        'value_to_convert': 'float'
+        'value_to_convert': 'float',
+        'separate_thousands': 'bool'
     }
 
     attribute_map = {
@@ -80,10 +81,11 @@ class DataTableColumnDTO(object):
         'is_used_in_cvs': 'isUsedInCVS',
         'only_has_unique_values': 'onlyHasUniqueValues',
         'not_available_values': 'notAvailableValues',
-        'value_to_convert': 'valueToConvert'
+        'value_to_convert': 'valueToConvert',
+        'separate_thousands': 'separateThousands'
     }
 
-    def __init__(self, date_format=None, internal_sys_column=None, name=None, data_type=None, description=None, units=None, unit_placement=None, id=None, table_id=None, identifier=None, aggregation_type=None, mappable=None, precision=None, round_to_precision=None, metadata=None, time_stamp=None, time_stamp_type=None, column_number=None, original_name=None, is_used_in_data_table_join=None, is_used_in_poi_analysis=None, is_used_in_cvs=None, only_has_unique_values=None, not_available_values=None, value_to_convert=None):  # noqa: E501
+    def __init__(self, date_format=None, internal_sys_column=None, name=None, data_type=None, description=None, units=None, unit_placement=None, id=None, table_id=None, identifier=None, aggregation_type=None, mappable=None, precision=None, round_to_precision=None, metadata=None, time_stamp=None, time_stamp_type=None, column_number=None, original_name=None, is_used_in_data_table_join=None, is_used_in_poi_analysis=None, is_used_in_cvs=None, only_has_unique_values=None, not_available_values=None, value_to_convert=None, separate_thousands=None):  # noqa: E501
         """DataTableColumnDTO - a model defined in Swagger"""  # noqa: E501
         self._date_format = None
         self._internal_sys_column = None
@@ -110,6 +112,7 @@ class DataTableColumnDTO(object):
         self._only_has_unique_values = None
         self._not_available_values = None
         self._value_to_convert = None
+        self._separate_thousands = None
         self.discriminator = None
         if date_format is not None:
             self.date_format = date_format
@@ -161,6 +164,8 @@ class DataTableColumnDTO(object):
             self.not_available_values = not_available_values
         if value_to_convert is not None:
             self.value_to_convert = value_to_convert
+        if separate_thousands is not None:
+            self.separate_thousands = separate_thousands
 
     @property
     def date_format(self):
@@ -686,6 +691,27 @@ class DataTableColumnDTO(object):
         """
 
         self._value_to_convert = value_to_convert
+
+    @property
+    def separate_thousands(self):
+        """Gets the separate_thousands of this DataTableColumnDTO.  # noqa: E501
+
+
+        :return: The separate_thousands of this DataTableColumnDTO.  # noqa: E501
+        :rtype: bool
+        """
+        return self._separate_thousands
+
+    @separate_thousands.setter
+    def separate_thousands(self, separate_thousands):
+        """Sets the separate_thousands of this DataTableColumnDTO.
+
+
+        :param separate_thousands: The separate_thousands of this DataTableColumnDTO.  # noqa: E501
+        :type: bool
+        """
+
+        self._separate_thousands = separate_thousands
 
     def to_dict(self):
         """Returns the model properties as a dict"""

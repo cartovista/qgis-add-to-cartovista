@@ -29,29 +29,29 @@ class UpdateTableFromFileParameter(object):
     """
     swagger_types = {
         'column_numbers_to_keep': 'list[int]',
-        'uploaded_path': 'str',
+        'upload_id': 'str',
         'sheet_name': 'str',
         'is_append': 'bool'
     }
 
     attribute_map = {
         'column_numbers_to_keep': 'columnNumbersToKeep',
-        'uploaded_path': 'uploadedPath',
+        'upload_id': 'uploadId',
         'sheet_name': 'sheetName',
         'is_append': 'isAppend'
     }
 
-    def __init__(self, column_numbers_to_keep=None, uploaded_path=None, sheet_name=None, is_append=None):  # noqa: E501
+    def __init__(self, column_numbers_to_keep=None, upload_id=None, sheet_name=None, is_append=None):  # noqa: E501
         """UpdateTableFromFileParameter - a model defined in Swagger"""  # noqa: E501
         self._column_numbers_to_keep = None
-        self._uploaded_path = None
+        self._upload_id = None
         self._sheet_name = None
         self._is_append = None
         self.discriminator = None
         if column_numbers_to_keep is not None:
             self.column_numbers_to_keep = column_numbers_to_keep
-        if uploaded_path is not None:
-            self.uploaded_path = uploaded_path
+        if upload_id is not None:
+            self.upload_id = upload_id
         if sheet_name is not None:
             self.sheet_name = sheet_name
         if is_append is not None:
@@ -79,25 +79,25 @@ class UpdateTableFromFileParameter(object):
         self._column_numbers_to_keep = column_numbers_to_keep
 
     @property
-    def uploaded_path(self):
-        """Gets the uploaded_path of this UpdateTableFromFileParameter.  # noqa: E501
+    def upload_id(self):
+        """Gets the upload_id of this UpdateTableFromFileParameter.  # noqa: E501
 
 
-        :return: The uploaded_path of this UpdateTableFromFileParameter.  # noqa: E501
+        :return: The upload_id of this UpdateTableFromFileParameter.  # noqa: E501
         :rtype: str
         """
-        return self._uploaded_path
+        return self._upload_id
 
-    @uploaded_path.setter
-    def uploaded_path(self, uploaded_path):
-        """Sets the uploaded_path of this UpdateTableFromFileParameter.
+    @upload_id.setter
+    def upload_id(self, upload_id):
+        """Sets the upload_id of this UpdateTableFromFileParameter.
 
 
-        :param uploaded_path: The uploaded_path of this UpdateTableFromFileParameter.  # noqa: E501
+        :param upload_id: The upload_id of this UpdateTableFromFileParameter.  # noqa: E501
         :type: str
         """
 
-        self._uploaded_path = uploaded_path
+        self._upload_id = upload_id
 
     @property
     def sheet_name(self):

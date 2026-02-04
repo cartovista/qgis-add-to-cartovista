@@ -39,7 +39,6 @@ class SecurityIdentityDTO(object):
         'provider': 'SecurityProvider',
         'provider_name': 'str',
         'identifier': 'str',
-        'provider_status': 'ProviderStatus',
         'path': 'str',
         'secure_object_permissions': 'list[PermissionPairDTO]'
     }
@@ -56,12 +55,11 @@ class SecurityIdentityDTO(object):
         'provider': 'provider',
         'provider_name': 'providerName',
         'identifier': 'identifier',
-        'provider_status': 'providerStatus',
         'path': 'path',
         'secure_object_permissions': 'secureObjectPermissions'
     }
 
-    def __init__(self, is_anonymous=None, display_name=None, name=None, id=None, is_group=None, last_modification_time=None, creation_time=None, tenant_id=None, provider=None, provider_name=None, identifier=None, provider_status=None, path=None, secure_object_permissions=None):  # noqa: E501
+    def __init__(self, is_anonymous=None, display_name=None, name=None, id=None, is_group=None, last_modification_time=None, creation_time=None, tenant_id=None, provider=None, provider_name=None, identifier=None, path=None, secure_object_permissions=None):  # noqa: E501
         """SecurityIdentityDTO - a model defined in Swagger"""  # noqa: E501
         self._is_anonymous = None
         self._display_name = None
@@ -74,7 +72,6 @@ class SecurityIdentityDTO(object):
         self._provider = None
         self._provider_name = None
         self._identifier = None
-        self._provider_status = None
         self._path = None
         self._secure_object_permissions = None
         self.discriminator = None
@@ -100,8 +97,6 @@ class SecurityIdentityDTO(object):
             self.provider_name = provider_name
         if identifier is not None:
             self.identifier = identifier
-        if provider_status is not None:
-            self.provider_status = provider_status
         if path is not None:
             self.path = path
         if secure_object_permissions is not None:
@@ -337,27 +332,6 @@ class SecurityIdentityDTO(object):
         """
 
         self._identifier = identifier
-
-    @property
-    def provider_status(self):
-        """Gets the provider_status of this SecurityIdentityDTO.  # noqa: E501
-
-
-        :return: The provider_status of this SecurityIdentityDTO.  # noqa: E501
-        :rtype: ProviderStatus
-        """
-        return self._provider_status
-
-    @provider_status.setter
-    def provider_status(self, provider_status):
-        """Sets the provider_status of this SecurityIdentityDTO.
-
-
-        :param provider_status: The provider_status of this SecurityIdentityDTO.  # noqa: E501
-        :type: ProviderStatus
-        """
-
-        self._provider_status = provider_status
 
     @property
     def path(self):

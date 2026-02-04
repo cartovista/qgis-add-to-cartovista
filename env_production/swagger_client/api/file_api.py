@@ -994,7 +994,7 @@ class FileApi(object):
         auth_settings = ['apiKey', 'bearer', 'secretKey']  # noqa: E501
 
         return self.api_client.call_api(
-            '/{tenantUrlCode}/api/v2/Layer/{layerId}/mvt/{x}/{y}/{z}', 'GET',
+            '/{tenantUrlCode}/api/v2/Layer/{layerId}/mvt/{x}/{y}/{z}.pbf', 'GET',
             path_params,
             query_params,
             header_params,

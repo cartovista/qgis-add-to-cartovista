@@ -31,7 +31,7 @@ class DeleteDataTableResponse(object):
         'id': 'str',
         'name': 'str',
         'did_delete': 'bool',
-        'used_in_layers': 'list[Layer]'
+        'used_in_layers': 'list[JoinedLayer]'
     }
 
     attribute_map = {
@@ -126,7 +126,7 @@ class DeleteDataTableResponse(object):
 
 
         :return: The used_in_layers of this DeleteDataTableResponse.  # noqa: E501
-        :rtype: list[Layer]
+        :rtype: list[JoinedLayer]
         """
         return self._used_in_layers
 
@@ -136,7 +136,7 @@ class DeleteDataTableResponse(object):
 
 
         :param used_in_layers: The used_in_layers of this DeleteDataTableResponse.  # noqa: E501
-        :type: list[Layer]
+        :type: list[JoinedLayer]
         """
 
         self._used_in_layers = used_in_layers

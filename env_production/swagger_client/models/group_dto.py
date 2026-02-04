@@ -39,7 +39,6 @@ class GroupDTO(object):
         'provider': 'SecurityProvider',
         'provider_name': 'str',
         'identifier': 'str',
-        'provider_status': 'ProviderStatus',
         'path': 'str',
         'secure_object_permissions': 'list[PermissionPairDTO]',
         'users': 'list[UserDTO]',
@@ -60,7 +59,6 @@ class GroupDTO(object):
         'provider': 'provider',
         'provider_name': 'providerName',
         'identifier': 'identifier',
-        'provider_status': 'providerStatus',
         'path': 'path',
         'secure_object_permissions': 'secureObjectPermissions',
         'users': 'users',
@@ -69,7 +67,7 @@ class GroupDTO(object):
         'user_count': 'userCount'
     }
 
-    def __init__(self, is_anonymous=None, display_name=None, name=None, id=None, is_group=None, last_modification_time=None, creation_time=None, tenant_id=None, provider=None, provider_name=None, identifier=None, provider_status=None, path=None, secure_object_permissions=None, users=None, description=None, folder_id=None, user_count=None):  # noqa: E501
+    def __init__(self, is_anonymous=None, display_name=None, name=None, id=None, is_group=None, last_modification_time=None, creation_time=None, tenant_id=None, provider=None, provider_name=None, identifier=None, path=None, secure_object_permissions=None, users=None, description=None, folder_id=None, user_count=None):  # noqa: E501
         """GroupDTO - a model defined in Swagger"""  # noqa: E501
         self._is_anonymous = None
         self._display_name = None
@@ -82,7 +80,6 @@ class GroupDTO(object):
         self._provider = None
         self._provider_name = None
         self._identifier = None
-        self._provider_status = None
         self._path = None
         self._secure_object_permissions = None
         self._users = None
@@ -112,8 +109,6 @@ class GroupDTO(object):
             self.provider_name = provider_name
         if identifier is not None:
             self.identifier = identifier
-        if provider_status is not None:
-            self.provider_status = provider_status
         if path is not None:
             self.path = path
         if secure_object_permissions is not None:
@@ -359,27 +354,6 @@ class GroupDTO(object):
         """
 
         self._identifier = identifier
-
-    @property
-    def provider_status(self):
-        """Gets the provider_status of this GroupDTO.  # noqa: E501
-
-
-        :return: The provider_status of this GroupDTO.  # noqa: E501
-        :rtype: ProviderStatus
-        """
-        return self._provider_status
-
-    @provider_status.setter
-    def provider_status(self, provider_status):
-        """Sets the provider_status of this GroupDTO.
-
-
-        :param provider_status: The provider_status of this GroupDTO.  # noqa: E501
-        :type: ProviderStatus
-        """
-
-        self._provider_status = provider_status
 
     @property
     def path(self):

@@ -31,7 +31,6 @@ class Slide(object):
         'name': 'str',
         'theme_set': 'str',
         'thematic_schemes': 'str',
-        'extent': 'str',
         'is_default_slide': 'bool',
         'vector_layers': 'list[VectorLayer]',
         'displayed_data_columns_by_layer': 'dict(str, SlideColumns)',
@@ -39,6 +38,8 @@ class Slide(object):
         'story': 'str',
         'position': 'int',
         'parent_folder_id': 'str',
+        'composite_variable_analysis_id': 'str',
+        'camera': 'MapCamera',
         'id': 'str',
         'map_id': 'str',
         'thumbnail_url': 'str',
@@ -50,7 +51,6 @@ class Slide(object):
         'name': 'name',
         'theme_set': 'themeSet',
         'thematic_schemes': 'thematicSchemes',
-        'extent': 'extent',
         'is_default_slide': 'isDefaultSlide',
         'vector_layers': 'vectorLayers',
         'displayed_data_columns_by_layer': 'displayedDataColumnsByLayer',
@@ -58,6 +58,8 @@ class Slide(object):
         'story': 'story',
         'position': 'position',
         'parent_folder_id': 'parentFolderId',
+        'composite_variable_analysis_id': 'compositeVariableAnalysisId',
+        'camera': 'camera',
         'id': 'id',
         'map_id': 'mapId',
         'thumbnail_url': 'thumbnailUrl',
@@ -65,12 +67,11 @@ class Slide(object):
         'analyses': 'analyses'
     }
 
-    def __init__(self, name=None, theme_set=None, thematic_schemes=None, extent=None, is_default_slide=None, vector_layers=None, displayed_data_columns_by_layer=None, layout=None, story=None, position=None, parent_folder_id=None, id=None, map_id=None, thumbnail_url=None, last_update=None, analyses=None):  # noqa: E501
+    def __init__(self, name=None, theme_set=None, thematic_schemes=None, is_default_slide=None, vector_layers=None, displayed_data_columns_by_layer=None, layout=None, story=None, position=None, parent_folder_id=None, composite_variable_analysis_id=None, camera=None, id=None, map_id=None, thumbnail_url=None, last_update=None, analyses=None):  # noqa: E501
         """Slide - a model defined in Swagger"""  # noqa: E501
         self._name = None
         self._theme_set = None
         self._thematic_schemes = None
-        self._extent = None
         self._is_default_slide = None
         self._vector_layers = None
         self._displayed_data_columns_by_layer = None
@@ -78,6 +79,8 @@ class Slide(object):
         self._story = None
         self._position = None
         self._parent_folder_id = None
+        self._composite_variable_analysis_id = None
+        self._camera = None
         self._id = None
         self._map_id = None
         self._thumbnail_url = None
@@ -90,8 +93,6 @@ class Slide(object):
             self.theme_set = theme_set
         if thematic_schemes is not None:
             self.thematic_schemes = thematic_schemes
-        if extent is not None:
-            self.extent = extent
         if is_default_slide is not None:
             self.is_default_slide = is_default_slide
         if vector_layers is not None:
@@ -106,6 +107,10 @@ class Slide(object):
             self.position = position
         if parent_folder_id is not None:
             self.parent_folder_id = parent_folder_id
+        if composite_variable_analysis_id is not None:
+            self.composite_variable_analysis_id = composite_variable_analysis_id
+        if camera is not None:
+            self.camera = camera
         if id is not None:
             self.id = id
         if map_id is not None:
@@ -179,27 +184,6 @@ class Slide(object):
         """
 
         self._thematic_schemes = thematic_schemes
-
-    @property
-    def extent(self):
-        """Gets the extent of this Slide.  # noqa: E501
-
-
-        :return: The extent of this Slide.  # noqa: E501
-        :rtype: str
-        """
-        return self._extent
-
-    @extent.setter
-    def extent(self, extent):
-        """Sets the extent of this Slide.
-
-
-        :param extent: The extent of this Slide.  # noqa: E501
-        :type: str
-        """
-
-        self._extent = extent
 
     @property
     def is_default_slide(self):
@@ -347,6 +331,48 @@ class Slide(object):
         """
 
         self._parent_folder_id = parent_folder_id
+
+    @property
+    def composite_variable_analysis_id(self):
+        """Gets the composite_variable_analysis_id of this Slide.  # noqa: E501
+
+
+        :return: The composite_variable_analysis_id of this Slide.  # noqa: E501
+        :rtype: str
+        """
+        return self._composite_variable_analysis_id
+
+    @composite_variable_analysis_id.setter
+    def composite_variable_analysis_id(self, composite_variable_analysis_id):
+        """Sets the composite_variable_analysis_id of this Slide.
+
+
+        :param composite_variable_analysis_id: The composite_variable_analysis_id of this Slide.  # noqa: E501
+        :type: str
+        """
+
+        self._composite_variable_analysis_id = composite_variable_analysis_id
+
+    @property
+    def camera(self):
+        """Gets the camera of this Slide.  # noqa: E501
+
+
+        :return: The camera of this Slide.  # noqa: E501
+        :rtype: MapCamera
+        """
+        return self._camera
+
+    @camera.setter
+    def camera(self, camera):
+        """Sets the camera of this Slide.
+
+
+        :param camera: The camera of this Slide.  # noqa: E501
+        :type: MapCamera
+        """
+
+        self._camera = camera
 
     @property
     def id(self):

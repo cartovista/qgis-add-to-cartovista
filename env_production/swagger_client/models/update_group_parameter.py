@@ -31,25 +31,22 @@ class UpdateGroupParameter(object):
         'name': 'str',
         'description': 'str',
         'permissions': 'list[PermissionDTO]',
-        'users': 'list[str]',
-        'status': 'ProviderStatus'
+        'users': 'list[str]'
     }
 
     attribute_map = {
         'name': 'name',
         'description': 'description',
         'permissions': 'permissions',
-        'users': 'users',
-        'status': 'status'
+        'users': 'users'
     }
 
-    def __init__(self, name=None, description=None, permissions=None, users=None, status=None):  # noqa: E501
+    def __init__(self, name=None, description=None, permissions=None, users=None):  # noqa: E501
         """UpdateGroupParameter - a model defined in Swagger"""  # noqa: E501
         self._name = None
         self._description = None
         self._permissions = None
         self._users = None
-        self._status = None
         self.discriminator = None
         if name is not None:
             self.name = name
@@ -59,8 +56,6 @@ class UpdateGroupParameter(object):
             self.permissions = permissions
         if users is not None:
             self.users = users
-        if status is not None:
-            self.status = status
 
     @property
     def name(self):
@@ -145,27 +140,6 @@ class UpdateGroupParameter(object):
         """
 
         self._users = users
-
-    @property
-    def status(self):
-        """Gets the status of this UpdateGroupParameter.  # noqa: E501
-
-
-        :return: The status of this UpdateGroupParameter.  # noqa: E501
-        :rtype: ProviderStatus
-        """
-        return self._status
-
-    @status.setter
-    def status(self, status):
-        """Sets the status of this UpdateGroupParameter.
-
-
-        :param status: The status of this UpdateGroupParameter.  # noqa: E501
-        :type: ProviderStatus
-        """
-
-        self._status = status
 
     def to_dict(self):
         """Returns the model properties as a dict"""
