@@ -4,5 +4,5 @@ param(
 )
 Push-Location
 Set-Location -Path $PSScriptRoot
-./create_plugin_folder.ps1 C:\Users\$Env:UserName\AppData\Roaming\QGIS\QGIS3\profiles\default\python\plugins -Prod:$Prod
+./create_plugin_folder.ps1 "C:\Users\$Env:UserName\AppData\Roaming\QGIS\QGIS3\profiles\default\python\plugins", "C:\Users\$Env:UserName\AppData\Roaming\QGIS\QGIS4\profiles\default\python\plugins" -Prod:$Prod
 Pop-Location
