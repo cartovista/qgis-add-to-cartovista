@@ -2,7 +2,7 @@
 
 The Add to CartoVista QGIS plugin allows users to easily export layers and maps from their QGIS projects to the CartoVista platform. Currently, **polygon, polyline, and point layers are supported**, with support for **raster layers coming soon**. Layers of other types will be ignored when uploading a map and cannot be uploaded on their own. If the plugin skips an unsupported layer during map upload, it will notify you at the end of the process, as shown in the screenshot below.
 
-<img width="592" height="356" alt="image" src="https://github.com/user-attachments/assets/5e70efdf-b86e-4425-aad2-a33d6ddbe53f" />
+<img width="592" height="356" alt="image" src="https://github.com/user-attachments/assets/feea379b-ce1a-4bf5-b27c-0d09d9ea62b9" />
 
 **New to the plugin?** Watch the CartoVista tutorial video and browse the FAQ for a quick introduction and setup guide on our [home page](https://cartovista.com/cartovista-qgis-plugin/).
 
